@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Monitoring Jalan Harian",
+  "description": "Aplikasi Web Monitoring dan Pelaporan Pekerjaan Harian Konstruksi & Patching Jalan, Manajemen Material, Jam Kerja Alat, Surat Masuk/Keluar, dan Audit Trail Multi-Peran.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
