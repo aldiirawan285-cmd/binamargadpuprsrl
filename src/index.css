@@ -1,46 +1,149 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --radius: 0.5rem;
+  --background: #f6f7f9;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #1e3a5f;
+  --primary-foreground: #ffffff;
+  --secondary: #eef1f5;
+  --secondary-foreground: #1e293b;
+  --muted: #eef1f5;
+  --muted-foreground: #5b6474;
+  --accent: #e8eef6;
+  --accent-foreground: #1e293b;
+  --destructive: #c62828;
+  --destructive-foreground: #ffffff;
+  --border: #dde2ea;
+  --input: #cfd6e0;
+  --ring: #2a78d6;
+  --sidebar: #14263f;
+  --sidebar-foreground: #dbe4f0;
+  --sidebar-active: #234b7a;
+
+  /* Status (reserved, selalu bersama ikon/label) */
+  --good-soft: #dcf2e3;
+  --good-ink: #146c2e;
+  --warn-soft: #fdf0cf;
+  --warn-ink: #8a5a00;
+  --crit-soft: #fbe0df;
+  --crit-ink: #a3201f;
+
+  /* Grafik — palet kategorikal (urutan tetap, tervalidasi CVD) */
+  --chart-surface: #ffffff;
+  --chart-grid: #e6e8ec;
+  --chart-axis: #5b6474;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --series-8: #e34948;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1419;
+    --foreground: #e6e9ee;
+    --card: #171d24;
+    --card-foreground: #e6e9ee;
+    --popover: #1b222a;
+    --popover-foreground: #e6e9ee;
+    --primary: #5b9be6;
+    --primary-foreground: #0b1220;
+    --secondary: #222a33;
+    --secondary-foreground: #e6e9ee;
+    --muted: #222a33;
+    --muted-foreground: #9aa4b2;
+    --accent: #26303b;
+    --accent-foreground: #e6e9ee;
+    --destructive: #e05252;
+    --destructive-foreground: #ffffff;
+    --border: #2b3440;
+    --input: #36414f;
+    --ring: #3987e5;
+    --sidebar: #0b1118;
+    --sidebar-foreground: #c9d3df;
+    --sidebar-active: #1d2f47;
+    --good-soft: #143823;
+    --good-ink: #8fdcaa;
+    --warn-soft: #3b2e0e;
+    --warn-ink: #f2c75c;
+    --crit-soft: #3d1818;
+    --crit-ink: #f29b9b;
+    --chart-surface: #171d24;
+    --chart-grid: #2b3440;
+    --chart-axis: #9aa4b2;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+    --series-8: #e66767;
+  }
+}
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-good-soft: var(--good-soft);
+  --color-good-ink: var(--good-ink);
+  --color-warn-soft: var(--warn-soft);
+  --color-warn-ink: var(--warn-ink);
+  --color-crit-soft: var(--crit-soft);
+  --color-crit-ink: var(--crit-ink);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
 
 @layer base {
-  :root {
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+  * {
+    border-color: var(--border);
   }
-
+  html,
   body {
+    background: var(--background);
+    color: var(--foreground);
     font-family: var(--font-sans);
-    background-color: #f8fafc;
-    color: #0f172a;
-    min-height: 100vh;
     -webkit-tap-highlight-color: transparent;
   }
+  input[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
 }
 
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Print styling for official road work reports */
-@media print {
-  header, nav, .no-print, button {
-    display: none !important;
-  }
-  body {
-    background-color: white !important;
-    color: black !important;
-  }
-  .print-only {
-    display: block !important;
-  }
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
